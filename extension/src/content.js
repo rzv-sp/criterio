@@ -64,6 +64,23 @@ const SIGNALS = [
       "como era de esperar", "sorprendentemente", "curiosamente"
     ]
   }
+  {
+  id: "official",
+  name: "Documento oficial",
+  colorClass: "criterio-official",
+  tooltip: "Mención a un documento oficial (ley, código o BOE). Se recomienda consultar el texto original.",
+  patterns: [
+    "código penal", "codigo penal",
+    "código civil", "codigo civil",
+    "boe", "boletín oficial del estado", "boletin oficial del estado",
+    "ley orgánica", "ley organica",
+    "real decreto", "real decreto-ley", "real decreto ley",
+    "constitución española", "constitucion española",
+    "estatuto de los trabajadores",
+    "ley de enjuiciamiento criminal",
+    "ley de enjuiciamiento civil"
+  ]
+}
 ];
 
 // Variables globales para el Side Panel
@@ -110,7 +127,7 @@ function highlightSignals(container) {
   if (!container) return;
 
   // Reiniciar contadores
-  signalCounts = { loaded: 0, weak: 0, certainty: 0, sensational: 0, irony: 0 };
+  signalCounts = { loaded: 0, weak: 0, certainty: 0, sensational: 0, irony: 0, official: 0, };
 
   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
     acceptNode: (node) => {
@@ -166,6 +183,7 @@ function injectStyles() {
     .criterio-certainty { background: rgba(239,68,68,0.28); border-bottom: 1px dashed #ef4444; }
     .criterio-sensational { background: rgba(249,115,22,0.30); border-bottom: 1px dashed #f97316; }
     .criterio-irony { background: rgba(168,85,247,0.28); border-bottom: 1px dashed #a855f7; }
+    .criterio-official { background-color: rgba(16, 185, 129, 0.28); border-bottom: 1px dashed #10b981; }
   `;
   document.head.appendChild(style);
 }
