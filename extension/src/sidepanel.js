@@ -10,12 +10,6 @@ function showSource(source) {
     statusEl.textContent = "Fuente no catalogada";
     return;
   }
-
-  document.getElementById("source-name").textContent = source.name;
-  document.getElementById("source-bias").textContent = source.bias;
-  document.getElementById("source-reliability").textContent = source.reliability;
-  document.getElementById("source-notes").textContent = source.notes || "";
-
   sourceCard.style.display = "block";
   statusEl.style.display = "none";
 }
