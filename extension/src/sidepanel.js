@@ -82,6 +82,22 @@ async function requestAnalysis() {
     console.error(e);
   }
 }
+// Actualizar automáticamente cuando cambia la página
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "complete" && tab.active) {
+    // Pequeño retraso para que el content script termine
+    setTimeout(() => {
+      requestAnalysis();
+    }, 800);
+  }
+});
+
+// También actualizar cuando se cambia de pestaña
+chrome.tabs.onActivated.addListener(() => {
+  setTimeout(() => {
+    requestAnalysis();
+  }, 400);
+});
 
 // Ejecutar al abrir el panel
 requestAnalysis();
