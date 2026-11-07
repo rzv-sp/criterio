@@ -1,3 +1,4 @@
+
 // Side Panel de Criterio
 
 const statusEl = document.getElementById("status");
