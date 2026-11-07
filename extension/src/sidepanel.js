@@ -82,6 +82,29 @@ async function requestAnalysis() {
     console.error(e);
   }
 }
+function showOfficialDocs(counts) {
+  // Eliminar bloque anterior si existe
+  const old = document.getElementById("official-block");
+  if (old) old.remove();
 
+  if (counts.official > 0) {
+    const block = document.createElement("div");
+    block.id = "official-block";
+    block.className = "card";
+    block.innerHTML = `
+      <h2>Documentos oficiales detectados</h2>
+      <p class="muted">Se han encontrado ${counts.official} mención(es) a normas o documentos oficiales.</p>
+      <p style="margin:10px 0;">
+        <a href="https://www.boe.es/buscar/" target="_blank" style="color:#2563eb;font-weight:500;">
+          Buscar en el BOE →
+        </a>
+      </p>
+      <p class="muted" style="font-size:12px;">
+        Criterio solo detecta menciones. Siempre consulta el texto oficial completo. Esto no constituye asesoramiento legal.
+      </p>
+    `;
+    document.body.appendChild(block);
+  }
+}
 // Ejecutar al abrir el panel
 requestAnalysis();
