@@ -76,6 +76,7 @@ async function requestAnalysis() {
 
       showSource(response.source);
       showSignals(response.signals || {});
+      showOfficialDocs(response.signals || {});
     });
   } catch (e) {
     statusEl.textContent = "Error al conectar con la página.";
