@@ -166,6 +166,7 @@ function injectStyles() {
     .criterio-certainty { background: rgba(239,68,68,0.28); border-bottom: 1px dashed #ef4444; }
     .criterio-sensational { background: rgba(249,115,22,0.30); border-bottom: 1px dashed #f97316; }
     .criterio-irony { background: rgba(168,85,247,0.28); border-bottom: 1px dashed #a855f7; }
+    .criterio-official { background-color: rgba(16, 185, 129, 0.28); border-bottom: 1px dashed #10b981; }
   `;
   document.head.appendChild(style);
 }
